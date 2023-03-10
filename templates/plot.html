@@ -1,0 +1,197 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Prediction Results </title>
+    <script src="/static/js/dygraph.js"></script>
+    <link rel="stylesheet" href="../static/style_result.css">
+    <link rel="stylesheet" href="/static/css/dygraph.css"/>
+</head>
+
+<body class = "bodyclass" >
+
+    <div class="topnav" >
+        <a href="/" class = "homepage" style="color:White" >Stock Price Prediction</a>
+    </div>
+
+    <h6>
+        <object class = "summary" data="../static/summary/{{stock_tinker}}.txt" style="width:85%; height:40%;" ></object>
+    </h6>
+        
+
+
+    <table class="print_details" align="center" >
+        <tr>
+
+            <td>
+                <font color="darkblue">{{ stock_tinker }}</font>
+            </td>
+                
+            <td>
+                <font color="black">Last Closing Stock Value</font>
+            </td>
+
+            <td>
+                <font color="black">Predicted Stock Value</font>
+            </td>
+
+        </tr>
+            
+        <tr>
+            <td></td>
+
+            <td>
+                <font color="black">{{original}}</font>
+            </td>
+
+            <td>
+                <script type="text/javascript">
+
+                    if ({{forecast}} > {{original}})
+                        document.write("<center><b><font color=\"green\"><font size=\"5\">  {{forecast}}  </font><\/font></b></center>");
+                    else
+                        document.write("<center><b><font color=\"red\"><font size=\"5\">  {{forecast}}  </font><\/font></b></center>");
+                    //<font color="grey">{{forecast}}</font>
+
+                </script>
+            </td>
+            
+        </tr>
+
+    </table>
+
+
+    <script type="text/javascript">
+        if( {{original}} - {{forecast}} < 0)
+        {   
+            document.write("<center><b><font color=\"green\"><font size=\"5\">BUY</font><\/font></b></center>");       
+        }
+        else 
+        {
+            document.write("<center><b><font color=\"red\"><font size=\"5\">SELL - if stock is owned </font><\/font></b></center>");
+            //document.write("<center><b><font color=\"red\">Sell - if stock is owned<\/font></b></center>");
+            //document.write("<center><b><font color=\"green\">Short - if stock is not owned<\/font></b></center>")
+            document.write("<center><b><font color=\"green\"><font size=\"5\">SHORT - if stock is not owned</font><\/font></b></center>");
+        }        
+    </script>    
+
+
+    <table class="container">
+        <tr>
+            <td>
+                <div id="graph" style="width:980px; height:500px;" class="graph"></div>
+            </td>
+            <td>
+                <div id="graphLegend" style="width:20px; height:3px;" class="graphbox"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class = "labels">
+                    Show Data:
+                    <input type=checkbox id="0" checked onClick="change(this)">
+                        <label for="0"> <font color="008000">Actual</font></label>
+                    <input type=checkbox id="1" checked onClick="change(this)">
+                        <label for="1"> <font color="#000080">Forecasted</font></label>
+                </div>
+            </td>
+        </tr>
+    </table>
+          
+<script type="text/javascript">
+    g2 = new Dygraph(
+                     document.getElementById("graph"),
+                     // CSV or path to a CSV file.
+                     "{{ url_for('static', filename='numbers.csv') }}", // path to CSV file
+                     {
+                     visibility: [true, true],
+                     labelsDiv: document.getElementById("graphLegend")
+                     }          // options
+                     );
+     setStatus();
+                     
+     function setStatus() {
+                         document.getElementById("visibility").innerHTML =
+                         g2.visibility().toString();
+                     }
+    function change(el) {
+                        g2.setVisibility(parseInt(el.id), el.checked);
+                        setStatus();
+                     }
+</script>
+
+
+<div><marquee>
+    <table class="newsbox" scrollamount="1" >
+        <tr>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px; font-family: Comic Sans MS" href="https://in.finance.yahoo.com/news/macrotech-invest-rs-2-800-085322741.html" target="_blank" ><font color="808080"><b>Macrotech to invest Rs 2,800 cr in FY22 on construction of realty units: MD Abhishek Lodha</font></b></a>
+                </div>
+            </td>   
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://in.finance.yahoo.com/news/godrej-boyce-expects-double-digit-082255849.html" target="_blank" ><b><font color="808080">Godrej & Boyce expects double-digit growth in healthcare biz going ahead</font color></b></a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://economictimes.indiatimes.com/markets/stocks/news/pnb-raises-rs-1800-crore-via-qip-offers-shares-at-33-75-per-unit/articleshow/82663370.cms" target="_blank" ><b><font color="808080">PNB raises Rs 1,800 crore via QIP; offers shares at 33.75 per unit</font color></b></a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://www.moneycontrol.com/news/business/markets/short-term-investor-may-consider-lightening-position-in-pharma-stocks-if-nifty-pharma-breaks-13650-6897871.html" target="_blank" ><b><font color="808080">Short term investor may consider lightening position in pharma stocks if Nifty Pharma breaks 13,650</font color></b></a>
+                </div>
+                
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://economictimes.indiatimes.com/markets/stocks/news/caught-short-strategists-are-a-stealth-stock-market-accelerant/articleshow/82675002.cms" target="_blank" ><b><font color="808080">Caught short strategists are a stealth stock market accelerant</font color></b></a>
+                </div>
+                
+            </td>
+        </tr>
+    </table>
+    </marquee>
+    <marquee direction = "right">
+    <table class="newsbox" scrollamount="1">
+        <tr>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://www.moneycontrol.com/news/photos/business/stocks/movers-shakers-top-10-stocks-that-moved-most-last-week-6898441.html" target="_blank" ><b><font color="808080">Movers & Shakers | Top 10 stocks that moved most last week</font color></b></a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://economictimes.indiatimes.com/markets/stocks/news/market-value-of-tcs-infosys-6-other-cos-tumbles-by-rs-1-1l-cr-in-a-week/articleshow/82676498.cms" target="_blank" ><b><font color="808080">Market value of TCS, Infosys, 6 other cos tumbles by Rs 1.1L cr in a week</font color></b></a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://in.finance.yahoo.com/news/geojit-financial-q4-net-profit-092606191.html" target="_blank" ><b><font color="808080">Geojit Financial Q4 net profit nearly doubles to Rs 37 crore</font color></b></a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://www.bloombergquint.com/business/dogecoin-surges-on-musk-tweet-as-crypto-rollercoaster-continues" target="_blank" ><b><font color="808080">Dogecoin Surges on Musk Tweet as Crypto Rollercoaster Continues</font color></b></a>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <a style="display:block;color:black; width: 200px; margin-left: 20px" href="https://www.livemint.com/market/stock-market-news/q4-earnings-pace-of-vaccination-global-trends-to-dictate-markets-this-week-11621155620498.html" target="_blank" ><b><font color="808080">Sensex, Nifty week ahead: Key factors to guide market this week</font color></b></a>
+                </div>  
+            </td>
+        </tr>
+    </table>
+    </marquee>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+

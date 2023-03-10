@@ -1,0 +1,15 @@
+numpy
+pandas
+scipy
+requests
+pyyaml
+tensorflow
+keras
+Flask
+flask_sqlalchemy
+flask_httpauth
+pystan
+passlib
+functions
+fbprophet
+pandas-datareader

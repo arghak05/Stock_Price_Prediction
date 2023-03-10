@@ -1,0 +1,92 @@
+video {
+  object-fit: fill;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.searchbox
+{
+	position: absolute;
+	top: 45%;
+	left: 45%;
+	z-index: 1;
+	border-bottom-left-radius: 12px;
+	border-top-left-radius: 12px;
+	transform: translate(-50%,-50%);
+	width: 345px;
+	height: 50px;
+	box-sizing: border-box;
+	background: white;
+	outline: none;
+	color: black;
+	font-weight: bold;
+	color: black;
+	font-size: 18px;
+	font-family: Comic Sans MS;
+}
+
+.submit
+{
+	position: absolute;
+	top: 45%;
+	left: 61%;
+	z-index: 1;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+	transform: translate(-50%,-50%);
+	width: 95px;
+	height: 50px;
+	box-sizing: border-box;
+	background: green;
+	outline: none;	
+	font-weight: bold;
+	color: white;
+	font-size: 18px;
+	font-family: Comic Sans MS;
+}
+
+.homepage
+{
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	right: 30%;
+	transform: translate(-50%,-50%);
+	outline: none;	
+	font-weight: bold;
+	color: white;
+	font-size: 25px;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-decoration: none;
+}
+
+.bottombar
+{
+	position: absolute;
+	top:95%;
+	outline: none;	
+	font-weight: bold;
+	color:chartreuse;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.tickersymbol
+{
+	position: absolute;
+	top: 50%;
+	left: 37%;
+	color:gold;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+
+
+
+
+
+
